@@ -1,30 +1,30 @@
-from pyzbar.pyzbar import decode
+# modules/scanner.py
+
 import cv2
+from pyzbar.pyzbar import decode
 import numpy as np
 
 def decode_barcode_from_bytes(image_bytes):
     nparr = np.frombuffer(image_bytes, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    barcodes = decode(img)
-    if barcodes:
-        return barcodes[0].data.decode("utf-8")
+    decoded_objects = decode(img)
+    if decoded_objects:
+        return decoded_objects[0].data.decode('utf-8')
     return None
 
-def RealTimeBarcodeScanner():
-    cap = cv2.VideoCapture(0)
-    barcode_data = None
-    while True:
-        ret, frame = cap.read()
+class RealTimeBarcodeScanner:
+    def __init__(self):
+        self.cap = cv2.VideoCapture(0)
+
+    def scan(self):
+        ret, frame = self.cap.read()
         if not ret:
-            break
-        decoded = decode(frame)
-        for obj in decoded:
-            barcode_data = obj.data.decode("utf-8")
-            cap.release()
-            return barcode_data
-        cv2.imshow("Scan Barcode", frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    cap.release()
-    cv2.destroyAllWindows()
-    return barcode_data
+            return None
+        decoded_objects = decode(frame)
+        for obj in decoded_objects:
+            return obj.data.decode('utf-8')
+        return None
+
+    def release(self):
+        self.cap.release()
+        cv2.destroyAllWindows()

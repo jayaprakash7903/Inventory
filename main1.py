@@ -20,8 +20,8 @@ if 'app_state' not in st.session_state:
 create_tables()
 
 # UI Configuration
-st.set_page_config(page_title="Barcode Scanner 1", page_icon="🔍")
-st.title("📦 Barcode Scanner App 1.0")
+st.set_page_config(page_title="FLS Bawal Inventory", page_icon="🔍")
+st.title("📦 FLS Packing Tracker")
 
 # Helper function for image input
 def get_image_input(label):

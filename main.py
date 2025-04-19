@@ -3,7 +3,7 @@ import io
 import zipfile
 import pandas as pd
 import datetime
-from modules.scanner import decode_barcode_from_bytes, RealTimeBarcodeScanner
+from modules.Scanner import decode_barcode_from_bytes, RealTimeBarcodeScanner
 from database.db_manager import create_tables, save_packing_slip, create_connection
 
 st.set_page_config(page_title="Barcode Scanner", page_icon="🔍")

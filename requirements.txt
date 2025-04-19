@@ -1,11 +1,5 @@
-streamlit
+streamlit==1.44.1
 numpy==1.26.4
-opencv-python
-pyzbar
-Pillow
-opencv-python-headless
-zbar
-markdown-it-py==3.0.0
-mdurl==0.1.2
-pygments==2.19.1
-rich==14.0.0
+opencv-python-headless==4.7.0.72
+pyzbar==0.1.9
+Pillow==9.0.1
